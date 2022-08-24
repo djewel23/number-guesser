@@ -15,11 +15,18 @@ let score = 20;
 const guessFunc = function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess);
+  // No value inside of input field
   if (!guess) {
     document.querySelector('.message').textContent = '⛔️ No Number!';
     console.log('Nothing here');
+
+    // When player wins
   } else if (guess === ranNumber) {
     document.querySelector('.message').textContent = '🎊 Correct number!';
+    document.querySelector('body').style.backgroundColor = '#60B347';
+    document.querySelector('.number').style.width = '30rem';
+
+    // Guess is too high
   } else if (guess > ranNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📈 Guess too high!';
@@ -29,6 +36,8 @@ const guessFunc = function () {
       document.querySelector('.message').textContent = '🫣 You loose!';
       document.querySelector('.score').textContent = 0;
     }
+
+    // Guess is too low
   } else if (guess < ranNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📉 Guess too low!';
